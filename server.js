@@ -13,9 +13,8 @@ function load() {
     var curline = lines[i].split(",");
     var obj = {};
     for (var j=0; j<headers.length; j++) {
-      obj[headers[j]] = Number(curline[j]);
+      obj[headers[j]] = curline[j];
     }
-    //console.log("add obj: " + JSON.stringify(obj))
     results.push(obj);
   }
   return results;

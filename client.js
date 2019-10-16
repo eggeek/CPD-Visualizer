@@ -1,10 +1,6 @@
 const Tile = require("./public/tile.js");
 const d3 = require("d3");
 
-function coloring(tile) {
-  return "pink";
-}
-
 function draw(raw_data) {
   data = $.parseJSON(raw_data)
   tiles = new Array();
@@ -13,12 +9,12 @@ function draw(raw_data) {
   }
 
   var lb = Math.min(
-    data.reduce((min, p) => p.y < min ? p.y : min, data[0].y),
-    data.reduce((min, p) => p.x < min ? p.x : min, data[0].x)
+    tiles.reduce((min, p) => p.y < min ? p.y : min, tiles[0].y),
+    tiles.reduce((min, p) => p.x < min ? p.x : min, tiles[0].x)
   );
   var ub = Math.max(
-    data.reduce((max, p) => p.y > max ? p.y : max, data[0].y),
-    data.reduce((max, p) => p.x > max ? p.x : max, data[0].x)
+    tiles.reduce((max, p) => p.y > max ? p.y : max, tiles[0].y),
+    tiles.reduce((max, p) => p.x > max ? p.x : max, tiles[0].x)
   );
   var w = 500, h = 500, l=1;
 
@@ -58,7 +54,7 @@ function draw(raw_data) {
   d3.selectAll("rect")
   .on("mouseover", function(d) {
     div.style("opacity", .9);
-    div.html(`x:${d.x}, y:${d.y}`)
+    div.html(d.getinfo())
        .style("left", (d3.event.pageX) + "px")
        .style("top", (d3.event.pageY-scaling(l)) + "px");
   })
