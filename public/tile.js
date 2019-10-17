@@ -13,6 +13,7 @@ var moves = ["N", "S", "E", "W", "NE", "NW", "SE", "SW"];
 function Tile(obj) {
   this.order  = Number(obj.order);
   this.cid    = Number(obj.cid);
+  this.rowid  = Number(obj.rowid);
   this.mask   = Number(obj.mask);
   this.x      = Number(obj.x);
   this.y      = Number(obj.y);
