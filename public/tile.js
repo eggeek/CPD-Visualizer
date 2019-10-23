@@ -10,21 +10,24 @@ for (var i=0; i<8; i++) {
 }
 var moves = ["N", "S", "E", "W", "NE", "NW", "SE", "SW"];
 
-function Tile(obj) {
-  this.order  = Number(obj.order);
-  this.cid    = Number(obj.cid);
-  this.rowid  = Number(obj.rowid);
-  this.mask   = Number(obj.mask);
-  this.x      = Number(obj.x);
-  this.y      = Number(obj.y);
-  if (obj.hasOwnProperty('hmove')) {
-    this.hmove = Number(obj['hmove']);
-  }
-  else {
-    this.hmove = -1;
+class Tile {
+
+  constructor(obj) {
+    this.order  = Number(obj.order);
+    this.cid    = Number(obj.cid);
+    this.rowid  = Number(obj.rowid);
+    this.mask   = Number(obj.mask);
+    this.x      = Number(obj.x);
+    this.y      = Number(obj.y);
+    if (obj.hasOwnProperty('hmove')) {
+      this.hmove = Number(obj['hmove']);
+    }
+    else {
+      this.hmove = -1;
+    }
   }
 
-  this.decode_mask = function() {
+  decode_mask() {
     var fmoves = [];
     for (var i=0; i<8; i++) if (this.mask & (1<<i)) {
       fmoves.push(moves[i]);
@@ -34,7 +37,7 @@ function Tile(obj) {
     return fmoves.join(",");
   }
 
-  this.coloring = function() {
+  coloring () {
     // order = -1: obstacle
     if (this.order == -1) return "black";
     var r=125, g=125, b=125;
@@ -47,12 +50,12 @@ function Tile(obj) {
     return "rgba(" + [r,g,b,a].join(",") + ")";
   }
 
-  this.getinfo = function() {
-    return `x:${this.x}, y:${this.y}
-            </br>mask:${this.mask} (${this.decode_mask()})
-            </br>cid: ${this.cid}
-            </br>order: ${this.order}
-            </br>color: ${this.coloring()}`
+  getinfo() {
+  return `x:${this.x}, y:${this.y}
+          </br>mask:${this.mask} (${this.decode_mask()})
+          </br>cid: ${this.cid}
+          </br>order: ${this.order}
+          </br>color: ${this.coloring()}`
   }
 }
 module.exports = Tile;

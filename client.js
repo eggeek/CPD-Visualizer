@@ -1,5 +1,6 @@
 const Tile = require("./public/tile.js");
 const d3 = require("d3");
+const $ = require("jquery");
 
 function draw(raw_data) {
   jsons = $.parseJSON(raw_data)
@@ -16,7 +17,7 @@ function draw(raw_data) {
     tiles.reduce((max, p) => p.y > max ? p.y : max, tiles[0].y),
     tiles.reduce((max, p) => p.x > max ? p.x : max, tiles[0].x)
   );
-  var w = 800, h = 800, l=1;
+  var w = 500, h = 500, l=1;
 
 
   var scaling = d3.scaleLinear()
@@ -125,3 +126,4 @@ $.ajax({
     console.log(`error ${error}`)
   }
 });
+

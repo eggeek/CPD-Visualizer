@@ -1,5 +1,4 @@
 const express = require("express");
-const csv = require('csv-parser');
 const fs = require("fs");
 
 const app = express();
@@ -8,7 +7,7 @@ function load() {
   var content = fs.readFileSync('data.csv', 'utf-8');
   var lines = content.trimRight().split('\n');
   var headers = lines[0].split(",");
-  results = []
+  var results = []
   for (var i=1; i<lines.length; i++) {
     var curline = lines[i].split(",");
     var obj = {};
