@@ -19,6 +19,7 @@ class Tile {
     this.mask   = Number(obj.mask);
     this.x      = Number(obj.x);
     this.y      = Number(obj.y);
+    this.side   = Number(obj.side);
     if (obj.hasOwnProperty('hmove')) {
       this.hmove = Number(obj['hmove']);
     }
@@ -55,6 +56,7 @@ class Tile {
           </br>mask:${this.mask} (${this.decode_mask()})
           </br>cid: ${this.cid}
           </br>order: ${this.order}
+          </br>side: ${this.side}
           </br>color: ${this.coloring()}`
   }
 }
