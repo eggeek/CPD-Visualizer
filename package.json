@@ -18,7 +18,7 @@
     "express": "^4.17.1",
     "fs": "0.0.1-security",
     "jquery": "^3.3.31",
-    "jsdom": "^15.1.1",
+    "jsdom": "^16.5.0",
     "typescript": "^3.6.4",
     "watchify": "^3.11.1"
   }
